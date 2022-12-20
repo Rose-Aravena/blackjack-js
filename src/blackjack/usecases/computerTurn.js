@@ -1,4 +1,5 @@
 import { getCrad, cardValue, createCardHtml } from "./";
+import Swal from 'sweetalert2';
 
 /**
  * turno de la computadora
@@ -9,13 +10,13 @@ import { getCrad, cardValue, createCardHtml } from "./";
  */
 export const computerTurn = (minPoints, pointsHTML, divComputerCard, deck = []) => {
 
-    if(!minPoints) throw new Error('Puntos minimos son necesarios');
-    if(!pointsHTML) throw new Error('Argumento pointsHTML es necesario');
+    if (!minPoints) throw new Error('Puntos minimos son necesarios');
+    if (!pointsHTML) throw new Error('Argumento pointsHTML es necesario');
 
     let computerPoints = 0;
 
     do {
-        const card = getCrad( deck );
+        const card = getCrad(deck);
 
         computerPoints = computerPoints + cardValue(card);
         pointsHTML.innerText = computerPoints;
@@ -31,13 +32,38 @@ export const computerTurn = (minPoints, pointsHTML, divComputerCard, deck = []) 
 
     setTimeout(() => {
         if (computerPoints === minPoints) {
-            alert('Nadie gana :(');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Nadie gana',
+            });
         } else if (minPoints > 21) {
-            alert('Computadora gana')
+            Swal.fire({
+                title: 'Winner!',
+                text: 'Computadora Gana.',
+                imageUrl: 'https://seagateapj.s3.us-west-2.amazonaws.com/2022/q4/2204_Gam_APJ_aftershock-campaign_LP_en_AU/build/images/custom-pc-anim.gif',
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+            });
         } else if (computerPoints > 21) {
-            alert('Jugador Gana');
+            Swal.fire({
+                title: 'Winner!',
+                text: 'Jugador Gana.',
+                imageUrl: 'https://i.pinimg.com/originals/87/6f/ab/876fab6207f93c293ae77a70f188c402.gif',
+                imageWidth: 300,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+            });
         } else {
-            alert('Computadora Gana')
+            Swal.fire({
+                title: 'Winner!',
+                text: 'Computadora Gana.',
+                imageUrl: 'https://seagateapj.s3.us-west-2.amazonaws.com/2022/q4/2204_Gam_APJ_aftershock-campaign_LP_en_AU/build/images/custom-pc-anim.gif',
+                imageWidth: 200,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+            });
         }
     }, 100);
 }
