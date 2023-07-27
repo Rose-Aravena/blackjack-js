@@ -21,6 +21,8 @@ Comienzas la partida pidiendo cartas hasta obtener 21 o estar lo mas cerca posib
 
 ![demo blackjack](blackjack-demo.gif)
 
+[Prueba la App aqui!](https://rose-aravena.github.io/blackjack-js/)
+
 #### Instalacion
 
 Pasos para ejecutar proyecto:
